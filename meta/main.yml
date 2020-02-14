@@ -1,10 +1,11 @@
 ---
-
 galaxy_info:
-  author: 'László Hegedűs'
-  description: 'Ansible Galaxy role for nginx_role.'
+  author: 'lordoftheflies'
+  role_name: 'nginx_role'
+  version: '1.0.0'
+  description: 'Ansible Galaxy role for NginX.'
   company: 'Cherubits'
-  license: Apache-2.0
+  license: 'Apache-2.0'
   min_ansible_version: '2.9'
 
   platforms:
@@ -32,4 +33,5 @@ galaxy_info:
     - centos
     - debian
     - ubuntu
-dependencies: []
+dependencies:
+  - lordoftheflies.python_role

@@ -37,6 +37,21 @@
 
 # OS Versions
 
+# tasks file for nginx
+- name: "Install nginx"
+  package:
+    name: nginx
+    state: present
+    force: true
+  notify: restart nginx
+
+- name: "Enable and start NginX service"
+  systemd:
+    name: nginx
+    enabled: true
+    daemon_reload: true
+    state: restarted
+
 ## DEBUGGING
 
 - name: "DEBUG - value of ansible_distribution"
@@ -55,7 +70,6 @@
 
 - name: "Run CentOS  specific tasks"
   include_tasks: "centos_.yml"
-  static: false
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version| int == ""
   with_distributions:
     - 7
@@ -66,7 +80,6 @@
 
 - name: "Run Debian  (Stretch) specific tasks"
   include_tasks: "debian_.yml"
-  static: false
   when: ansible_distribution == 'Debian' and ansible_distribution_major_version| int == ""
   with_distributions:
     - 7
@@ -77,7 +90,6 @@
 
 - name: "Run Ubuntu  specific tasks"
   include_tasks: "ubuntu_.yml"
-  static: false
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == ""
   with_distributions:
       - 12.04
@@ -86,10 +98,3 @@
       - 17.04
       - 18.04
       - 19.04
-
-- name: "Install necessary packages"
-  package:
-    - name: python-pip
-      state: present
-    - name: libssl-dev
-      state: present
