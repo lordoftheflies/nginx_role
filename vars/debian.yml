@@ -1,0 +1,5 @@
+---
+# ansible-role-nginx_role/vars/debian.yml
+
+# Debian specific vars
+nginx_package_extension: 'deb'

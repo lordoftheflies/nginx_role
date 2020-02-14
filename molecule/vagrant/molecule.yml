@@ -1,0 +1,24 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: virtualbox
+lint:
+  name: yamllint
+platforms:
+  - name: nginx_role-xenial
+    box: cjsteel/xenial
+  - name: nginx_role-bionic
+    box: cjsteel/bionic
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: vagrant
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

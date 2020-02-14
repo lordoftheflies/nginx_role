@@ -1,0 +1,4 @@
+---
+# ansible-role-nginx_role/vars/debian.yml
+
+nginx_package_extension: 'rpm'
